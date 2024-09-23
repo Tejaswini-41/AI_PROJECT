@@ -1,0 +1,5 @@
+npm init vite
+cd client
+npm i (also install all dependencies)
+
+i have client + server = npm run dev
