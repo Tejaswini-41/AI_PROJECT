@@ -1,0 +1,68 @@
+.dashboard {
+    display: flex; /* Use flexbox for sidebar and main content */
+    height: 100vh; /* Full height */
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    background-color: #f1f1f1; /* Light grey background */
+    padding: 20px;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin: 10px 0 5px 0;
+}
+
+.profile-details {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.view-receipt {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex-grow: 1; /* Allow main content to fill the remaining space */
+    padding: 20px;
+    background-color: #fff; /* White background for main content */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between title and icons */
+    align-items: center; /* Center vertically */
+}
+
+.dashboard-title {
+    font-size: 2em;
+    color: #333; /* Dark text color */
+}
+
+.navbar-icons {
+    display: flex;
+    gap: 15px; /* Space between icons */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap onto the next line */
+    justify-content: center; /* Center the cards */
+}

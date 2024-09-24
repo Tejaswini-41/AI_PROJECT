@@ -1,0 +1,40 @@
+/* TaskCard.css */
+.task-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.description {
+    margin: 10px 0;
+}
+
+.upload-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-upload {
+    padding: 5px;
+}
+
+.upload-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
