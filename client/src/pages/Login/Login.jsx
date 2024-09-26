@@ -1,59 +1,72 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import { API_BASE_URL } from '../config'; 
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    
+    const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const data = { email, password };
-      console.log('Logging in with data:', data); // Log the login data
-      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, data);
-      localStorage.setItem('token', res.data.token);
-      navigate('/dashboard'); // Redirect to dashboard on successful login
-    } catch (error) {
-      console.error('Login Error:', error);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError(''); // Clear previous errors
+        setLoading(true); // Start loading
+
+        // Basic validation
+        if (!email || !password) {
+            setError('Both email and password are required.');
+            setLoading(false);
+            return;
+        }
+
+        try {
+            const result = await axios.post('http://localhost:3000/auth/login', { email, password });
+            console.log(result.data);
+            setSuccess(true);
+            setTimeout(() => {
+                navigate('/dashboard'); 
+            }, 2000);
+        } catch (err) {
+            console.error(err);
+            setError('Invalid email or password. Please try again.');
+        } finally {
+            setLoading(false); 
+        }
     }
-  };
-  
 
-  return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          onClick={handleLogin}
-          className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        >
-          Login
-        </button>
-        <div className="text-center mt-4">
-          <span>Don't have an account? </span>
-          <Link to="/register" className="text-blue-500 hover:underline">
-            Register here
-          </Link>
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="email" 
+                    value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    placeholder="Email" 
+                    required 
+                />
+                <input 
+                    type="password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    placeholder="Password" 
+                    required 
+                />
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                </button>
+            </form>
+            
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {success && <p style={{ color: 'green' }}>Login successful! Redirecting...</p>}
+
+            <p>Don't have an account?</p>
+            <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">Register</Link>
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
 export default Login;

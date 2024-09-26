@@ -1,18 +1,19 @@
 {
   "name": "ai_project",
   "version": "1.0.0",
-  "type" : "module",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server":"cd server && npm i && nodemon index.js",
+    "server": "cd server && npm i && nodemon index.js",
     "client": "cd client && npm i && npm run dev",
     "dev": "concurrently -k \"npm run server\" \"npm run client\""
   },
   "author": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5"
   },
   "license": "ISC",
   "description": ""
