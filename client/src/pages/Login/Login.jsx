@@ -13,8 +13,8 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Clear previous errors
-        setLoading(true); // Start loading
+        setError(''); 
+        setLoading(true); 
 
         // Basic validation
         if (!email || !password) {
