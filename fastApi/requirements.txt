@@ -1,0 +1,14 @@
+ fastapi 
+ uvicorn 
+ sentence-transformers 
+ pymongo
+ scikit-learn 
+ PyMuPDF 
+ numpy
+ pytesseract 
+ pillow
+ python-dotenv
+ python-docx 
+ nltk
+ bcrypt
+ python-multipart
