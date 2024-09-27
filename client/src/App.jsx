@@ -1,24 +1,23 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Dashboard from './pages/Dashboard/Dashboard';
-import AssignedTasks from './pages/Dashboard/AssignedTasks';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login/Login';           // Import Login component
+import Register from './pages/Register/Register';   // Import Register component
+import Dashboard from './pages/Dashboard/Dashboard'; // Import Dashboard component
 
 const App = () => {
-  return (
-      <Router>
-              <Routes>
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Login />} /> Default to Login */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/AssignedTask" element={<AssignedTasks />} />
-        </Routes>
-    </Router>
-    
-  );
+    return (
+        <Router>
+            <div>
+                <h1>Welcome to Classroom</h1>
+                <Routes>
+                    <Route path="/" element={<Login />} />                {/* Default route to Login */}
+                    <Route path="/register" element={<Register />} />     {/* Registration route */}
+                    <Route path="/login" element={<Login />} />           {/* Login route */}
+                    <Route path="/dashboard" element={<Dashboard />} />   {/* Dashboard route */}
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
-
-export default App
+export default App;
