@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login/Login';           // Import Login component
 import Register from './pages/Register/Register';   // Import Register component
 import Dashboard from './pages/Dashboard/Dashboard'; // Import Dashboard component
-
+import AssignedTask from './pages/Dashboard/AssignedTasks';
 const App = () => {
     return (
         <Router>
@@ -14,6 +14,7 @@ const App = () => {
                     <Route path="/register" element={<Register />} />     {/* Registration route */}
                     <Route path="/login" element={<Login />} />           {/* Login route */}
                     <Route path="/dashboard" element={<Dashboard />} />   {/* Dashboard route */}
+                    <Route path="/assignedtask" element={<AssignedTask />} />
                 </Routes>
             </div>
         </Router>

@@ -1,22 +1,22 @@
 import React from 'react';
-import './sidebar.css'; // Import the CSS file for sidebar styling
-
-// Default profile image path
-const defaultProfileImage = '/default-profile.png';
+import './Sidebar.css';
 
 const Sidebar = ({ userProfile }) => {
+    const { name, class: studentClass, course, image } = userProfile;
+
     return (
         <div className="sidebar">
-            <div className="profile">
+            <div className="profile-section">
                 <img 
-                    src={userProfile.image || defaultProfileImage} 
+                    src={image || 'https://via.placeholder.com/150'} 
                     alt="Profile" 
-                    className="profile-image" 
+                    className="profile-image"
                 />
-                <h2 className="profile-name">{userProfile.name}</h2>
-                <p className="profile-details">Class: {userProfile.class} | Course: {userProfile.course}</p>
+                <h3>{name}</h3>
+                <p>Class: {studentClass}</p>
+                <p>Course: {course}</p>
             </div>
-            <button className="view-receipt">View Receipt</button>
+            <button className="view-receipt-button">View Receipt</button>
         </div>
     );
 };
