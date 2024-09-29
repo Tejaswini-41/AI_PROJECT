@@ -1,5 +1,4 @@
-// AssignedTasks.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import TaskCard from './TaskCard';
 import Sidebar from './Sidebar';
 import './AssignedTasks.css';
@@ -27,12 +26,10 @@ const AssignedTasks = () => {
 
     return (
         <div className="assigned-tasks">
-           
-            <Sidebar userProfile={userProfile} /> 
-          
+            <Sidebar userProfile={userProfile} />
             <div className="main-content">
                 <nav className="navbar">
-                    <h2>Assigned Task</h2>
+                    <h2>Assigned Tasks</h2>
                 </nav>
                 <div className="tasks-container">
                     {tasks.map((task, index) => (

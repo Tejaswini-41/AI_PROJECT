@@ -1,16 +1,12 @@
 .sidebar {
-    width: 250px; /* Adjust width as needed */
-    background-color: #f4f4f4; /* Background color */
-    padding: 20px; /* Padding around the sidebar */
-    border-right: 1px solid #ddd; /* Right border */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.profile {
-    text-align: center; /* Center align text */
-    margin-bottom: 20px; /* Space below profile */
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .profile-img {
@@ -26,21 +22,16 @@
     margin: 10px 0; /* Margin around the name */
 }
 
-.profile-details {
-    font-size: 0.9em; /* Font size for the details */
-    color: #666; /* Color for the details */
+.view-receipt-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.view-receipt {
-    padding: 10px 15px; /* Padding for the button */
-    background-color: #007bff; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Cursor change on hover */
-    transition: background-color 0.3s; /* Smooth background color change */
-}
-
-.view-receipt:hover {
-    background-color: #0056b3; /* Darker background on hover */
+.view-receipt-button:hover {
+    background-color: #0056b3;
 }

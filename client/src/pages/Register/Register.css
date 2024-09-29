@@ -1,0 +1,48 @@
+.register-container {
+    background-color: #FFFFFF; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px; /* Max width for form */
+    margin: 50px auto; /* Center the form */
+    padding: 20px; /* Padding around the form */
+    text-align: center; /* Center text */
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+}
+
+.input-field {
+    margin-bottom: 15px; /* Space between inputs */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded edges */
+}
+
+.register-button {
+    background-color: #4CAF50; /* Green button */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px; /* Padding inside button */
+    border-radius: 5px; /* Rounded edges */
+    cursor: pointer; /* Pointer on hover */
+}
+
+.register-button:disabled {
+    background-color: #ccc; /* Disabled button color */
+}
+
+.error-message {
+    color: red; /* Red error message */
+}
+
+.success-message {
+    color: green; /* Green success message */
+}
+
+.login-link {
+    margin-top: 15px; /* Space above link */
+    text-decoration: none; /* Remove underline */
+    color: #2196F3; /* Blue link color */
+}

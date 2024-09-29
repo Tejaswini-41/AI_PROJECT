@@ -47,7 +47,7 @@ const Sidebar = ({ userProfile }) => {
                 <h2 className="profile-name">Name: {userProfile.name || 'Tejaswini Durge'}</h2>
                 <p className="profile-email">Email: {userProfile.email || 'tejaswini@gmail.com'}</p>
             </div>
-            <button className="view-receipt">View Receipt</button>
+            <button className="view-receipt-button">View Receipt</button>
         </div>
     );
 };

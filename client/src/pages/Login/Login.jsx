@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import './Login.css';  // External CSS file for styling
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -16,7 +17,6 @@ const Login = () => {
         setError(''); 
         setLoading(true); 
 
-        // Basic validation
         if (!email || !password) {
             setError('Both email and password are required.');
             setLoading(false);
@@ -40,14 +40,17 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="login-container">
+            <h2>Student Login</h2>
+            <p className="tagline">Manage Your NOC Portal</p>
+            <form onSubmit={handleSubmit} className="login-form">
                 <input 
                     type="email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)} 
                     placeholder="Email" 
                     required 
+                    className="input-field"
                 />
                 <input 
                     type="password" 
@@ -55,17 +58,19 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)} 
                     placeholder="Password" 
                     required 
+                    className="input-field"
                 />
-                <button type="submit" disabled={loading}>
+                <button type="submit" className="login-button" disabled={loading}>
                     {loading ? 'Logging in...' : 'Login'}
                 </button>
             </form>
-            
+
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {success && <p style={{ color: 'green' }}>Login successful! Redirecting...</p>}
 
+            {/* <p>Forgot Password?</p> */}
             <p>Don't have an account?</p>
-            <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">Register</Link>
+            <Link to="/register" className="register-link">Register</Link>
         </div>
     );
 };

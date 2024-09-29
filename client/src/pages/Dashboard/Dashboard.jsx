@@ -34,11 +34,40 @@ const userProfile = {
             {/* Pass static user profile to Sidebar */}
             <Sidebar userProfile={userProfile} />
             <div className="main-content">
-                <div className="navbar">
-                    <h1 className="dashboard-title">Student Dashboard</h1>
-                    <div className="navbar-icons">
-                        <FaBell size={24} />
-                        <FaPlus size={24} />
+                {/* Top Navbar */}
+                <nav className="navbar">
+                    <h2>Dashboard</h2>
+                    <div className="nav-icons">
+                        <i className="fas fa-bell"></i>
+                        <i className="fas fa-cog"></i>
+                    </div>
+                </nav>
+
+                {/* Subjects Section */}
+                <h2>Subjects</h2>
+                <div className="subjects">
+                    {/* Mathematics Card */}
+                    <div className="subject-card" onClick={handleMathematicsClick}>
+                        <h3>Mathematics</h3>
+                        <p>View assigned tasks</p>
+                    </div>
+
+                    {/* Science Card */}
+                    <div className="subject-card">
+                        <h3>Science</h3>
+                        <p>Click to view</p>
+                    </div>
+
+                    {/* History Card */}
+                    <div className="subject-card">
+                        <h3>History</h3>
+                        <p>Click to view</p>
+                    </div>
+
+                    {/* English Card */}
+                    <div className="subject-card">
+                        <h3>English</h3>
+                        <p>Click to view</p>
                     </div>
                 </div>
                 <div className="card-container">
