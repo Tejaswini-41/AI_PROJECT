@@ -37,22 +37,22 @@ const handleUpload = async (TaskModel, req, res) => {
 };
 
 // Task 1 Upload Route
-router.post('/upload-task1', upload.array('files'), (req, res) => {
+router.post('/upload-task1', upload.array('assignmentFiles'), (req, res) => {
     handleUpload(Task1, req, res);
 });
 
 // Task 2 Upload Route
-router.post('/upload-task2', upload.array('files'), (req, res) => {
+router.post('/upload-task2', upload.array('assignmentFiles'), (req, res) => {
     handleUpload(Task2, req, res);
 });
 
 // Task 3 Upload Route
-router.post('/upload-task3', upload.array('files'), (req, res) => {
+router.post('/upload-task3', upload.array('assignmentFiles'), (req, res) => {
     handleUpload(Task3, req, res);
 });
 
 // Task 4 Upload Route
-router.post('/upload-task4', upload.array('files'), (req, res) => {
+router.post('/upload-task4', upload.array('assignmentFiles'), (req, res) => {
     handleUpload(Task4, req, res);
 });
 

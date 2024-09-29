@@ -18,7 +18,7 @@ app.use(express.json());  // Parse JSON requests
 
 // Routes
 app.use('/auth', authRoutes);  // For registration and login routes
-app.use('/tasks', taskRoutes);  // For handling task-related requests
+app.use('/api/tasks', taskRoutes);  // For handling task-related requests
 
 // Serve uploaded files statically
 app.use('/uploads', express.static('uploads'));  // Serve files from the 'uploads' folder

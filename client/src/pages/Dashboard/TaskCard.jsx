@@ -1,7 +1,7 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import './TaskCard.css';
 
-const TaskCard = ({ title, description }) => {
+const TaskCard = ({ title, description, taskNumber, onFileUpload, onFileRemove, uploadedFiles }) => {
     const [files, setFiles] = useState([]);
     const [studentId] = useState("12345"); // Replace with actual student ID logic
     const [successMessage, setSuccessMessage] = useState("");
@@ -9,15 +9,20 @@ const TaskCard = ({ title, description }) => {
 
     const handleFileUpload = (event) => {
         const selectedFiles = Array.from(event.target.files);
-        setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
+        setFiles((prevFiles) => {
+            const updatedFiles = [...prevFiles, ...selectedFiles];
+            onFileUpload(taskNumber, selectedFiles); // Notify the parent component
+            return updatedFiles;
+        });
     };
 
     const handleFileRemove = (fileName) => {
         setFiles((prevFiles) => prevFiles.filter(file => file.name !== fileName));
+        onFileRemove(taskNumber, fileName); // Notify the parent component
     };
 
     const triggerFileUpload = () => {
-        document.getElementById('file-upload-input').click(); // Triggers the hidden file input
+        document.getElementById(`file-upload-input-${taskNumber}`).click(); // Triggers the hidden file input
     };
 
     const handleSubmit = async () => {
@@ -28,23 +33,23 @@ const TaskCard = ({ title, description }) => {
         });
 
         try {
-            const response = await fetch('http://localhost:5000/api/tasks/upload-task1', { // Adjust endpoint if necessary
+            const response = await fetch(`http://localhost:3000/api/tasks/upload-task${taskNumber}`, {
                 method: 'POST',
                 body: formData,
             });
 
             if (response.ok) {
-                setSuccessMessage('Files uploaded successfully!'); // Set success message
-                setErrorMessage(''); // Clear any previous error messages
-                setFiles([]); // Clear the files after successful upload
+                setSuccessMessage('Files uploaded successfully!');
+                setErrorMessage('');
+                setFiles([]);
             } else {
-                setErrorMessage('Failed to upload files.'); // Set error message
-                setSuccessMessage(''); // Clear any previous success messages
+                setErrorMessage('Failed to upload files.');
+                setSuccessMessage('');
             }
         } catch (error) {
             console.error('Error:', error);
-            setErrorMessage('An error occurred during the upload.'); // Set error message
-            setSuccessMessage(''); // Clear any previous success messages
+            setErrorMessage('An error occurred during the upload.');
+            setSuccessMessage('');
         }
     };
 
@@ -57,7 +62,7 @@ const TaskCard = ({ title, description }) => {
                     Upload
                 </button>
                 <input
-                    id="file-upload-input"
+                    id={`file-upload-input-${taskNumber}`}
                     type="file"
                     className="file-upload"
                     multiple
@@ -68,12 +73,12 @@ const TaskCard = ({ title, description }) => {
                     Submit
                 </button>
             </div>
-            {successMessage && <p className="success-message">{successMessage}</p>} {/* Display success message */}
-            {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
+            {successMessage && <p className="success-message">{successMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <div className="uploaded-files">
-                {files.length > 0 && (
+                {uploadedFiles.length > 0 && (
                     <ul>
-                        {files.map((file, index) => (
+                        {uploadedFiles.map((file, index) => (
                             <li key={index}>
                                 {file.name}
                                 <button

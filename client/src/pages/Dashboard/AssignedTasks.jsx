@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TaskCard from './TaskCard';
-import Sidebar from './sidebar';
+import Sidebar from './Sidebar'; // Ensure the casing matches your file name
 import './AssignedTasks.css';
 
 const AssignedTasks = () => {
@@ -18,6 +18,27 @@ const AssignedTasks = () => {
         { title: 'Computer Assignment', description: 'Create a web page.', taskNumber: 4 }
     ];
 
+    const [taskFiles, setTaskFiles] = useState({
+        1: [], // For Math Homework
+        2: [], // For Science Project
+        3: [], // For History Essay
+        4: []  // For Computer Assignment
+    });
+
+    const handleFileUpload = (taskNumber, files) => {
+        setTaskFiles((prev) => ({
+            ...prev,
+            [taskNumber]: [...prev[taskNumber], ...files]
+        }));
+    };
+
+    const handleFileRemove = (taskNumber, fileName) => {
+        setTaskFiles((prev) => ({
+            ...prev,
+            [taskNumber]: prev[taskNumber].filter(file => file.name !== fileName)
+        }));
+    };
+
     return (
         <div className="assigned-tasks">
             <Sidebar userProfile={userProfile} />
@@ -26,12 +47,15 @@ const AssignedTasks = () => {
                     <h2>Assigned Tasks</h2>
                 </nav>
                 <div className="tasks-container">
-                    {tasks.map((task, index) => (
+                    {tasks.map((task) => (
                         <TaskCard
-                            key={index}
+                            key={task.taskNumber}
                             title={task.title}
                             description={task.description}
-                            taskNumber={task.taskNumber}  // Pass taskNumber here
+                            taskNumber={task.taskNumber}
+                            onFileUpload={handleFileUpload}
+                            onFileRemove={handleFileRemove}
+                            uploadedFiles={taskFiles[task.taskNumber]}
                         />
                     ))}
                 </div>
