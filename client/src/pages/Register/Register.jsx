@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -29,16 +30,24 @@ const Register = () => {
         
         try {
             const result = await axios.post('http://localhost:3000/auth/register', { name, email, password });
-            console.log(result.data);
-            setSuccess(true);
+            
+            if (result.data.token) {
+                // Store the token and user data in localStorage
+                localStorage.setItem('token', result.data.token);
+                localStorage.setItem('user', JSON.stringify(result.data.user)); // Save user data (name, email, etc.)
+                
+                setSuccess(true);  // Show success message
+                
+                navigate('/login');
+            }
         } catch (err) {
             console.error(err);
             setError('Registration failed. Please try again.');
         } finally {
             setLoading(false);  // End loading
         }
-    }
-
+    };
+    
     return (
         <div>
             <form onSubmit={handleSubmit}>

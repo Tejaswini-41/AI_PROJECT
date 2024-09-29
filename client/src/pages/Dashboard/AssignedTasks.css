@@ -10,6 +10,27 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.button-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Space above the button */
+}
+
+.back-button {
+    display: inline-block; /* Make it behave like a button */
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.back-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
 .main-content {
     flex-grow: 1;
     padding: 20px;

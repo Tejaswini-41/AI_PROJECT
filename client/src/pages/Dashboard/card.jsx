@@ -1,11 +1,18 @@
 import React from 'react';
-import './card.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import './Card.css'; // Adjust the path if necessary
 
 const Card = ({ title, description }) => {
+    const navigate = useNavigate(); // Use the useNavigate hook
+
+    const handleClick = () => {
+        navigate('/assigned-tasks'); // Navigate to the assigned tasks route
+    };
+
     return (
-        <div className="card">
-            <h3 className="card-title">{title}</h3>
-            <p className="card-description">{description}</p>
+        <div className="card" onClick={handleClick}>
+            <h3>{title}</h3>
+            <p>{description}</p>
         </div>
     );
 };

@@ -1,24 +1,22 @@
+// server.js
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from './config/db.js';  // Import the DB connection
+import connectDB from './config/db.js';  
 import authRoutes from './routes/auth.js';
+import uploadRoutes from './routes/upload.js'; // Import your upload routes
 
-dotenv.config();  // Load environment variables
-
-// Connect to MongoDB Atlas
+dotenv.config();  
 connectDB();
 
 const app = express();
-
-// Middleware
 app.use(cors());
-app.use(express.json());  // Parse JSON requests
+app.use(express.json());  
 
-// Routes
-app.use('/auth', authRoutes);  // For registration and login routes
+// Use the routes
+app.use('/auth', authRoutes);  
+app.use('/api', uploadRoutes); // Use the upload routes under /api
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

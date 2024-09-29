@@ -1,24 +1,26 @@
 // AssignedTasks.jsx
 import React from 'react';
 import TaskCard from './TaskCard';
-import Sidebar from './sidebar';
+import Sidebar from './Sidebar';
 import './AssignedTasks.css';
 
 const AssignedTasks = () => {
     const userProfile = {
-        name: "John Doe",
-        class: "12",
-        course: "Science",
-        image: null, // Set to null if no image is provided
+        image: null, // Placeholder image
+        name: 'Tejaswini Durge',
+        email: 'tejaswini@gmail.com',
     };
+    
     const tasks = [
         {
-            title: 'Math Homework',
-            description: 'Complete exercises from chapter 5. Due: 30th September',
+            taskId: 1,
+            title: 'AI Task 1:',
+            description: 'Write an assignment on learning strategies mentioned in AI.  Due: Sep 30, 12:29 PM',
         },
         {
-            title: 'Science Project',
-            description: 'Submit your science project by 5th October. Guidelines are attached.',
+            taskId:2,
+            title: 'AI Task :',
+            description: 'Write one example of partial order planning and non linear planning.  Due: Sep 25, 12:29 PM',
         },
         // Add more tasks as needed
     ];
@@ -36,10 +38,16 @@ const AssignedTasks = () => {
                     {tasks.map((task, index) => (
                         <TaskCard 
                             key={index} 
+                            taskId={ task.taskId}
                             title={task.title} 
                             description={task.description} 
                         />
                     ))}
+                </div>
+                <div className="button-container">
+                    <a href="/dashboard" className="back-button">
+                        Back to Dashboard
+                    </a>
                 </div>
             </div>
         </div>
@@ -47,4 +55,5 @@ const AssignedTasks = () => {
 };
 
 export default AssignedTasks;
+
 
