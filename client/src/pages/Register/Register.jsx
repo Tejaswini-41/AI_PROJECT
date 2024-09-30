@@ -25,7 +25,7 @@ const Register = () => {
         }
         
         // Password validation
-        const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        const passwordValidation = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/;
         if (!passwordValidation.test(password)) {
             setError('Password must include uppercase, lowercase, number, and special character.');
             setLoading(false);

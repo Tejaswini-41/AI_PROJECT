@@ -25,7 +25,6 @@ const Login = () => {
 
         try {
             const result = await axios.post('http://localhost:3000/auth/login', { email, password });
-            localStorage.setItem('authToken', response.data.token);
             console.log(result.data);
             setSuccess(true);
             setTimeout(() => {
