@@ -36,7 +36,9 @@ const Register = () => {
             const result = await axios.post('http://localhost:3000/auth/register', { name, email, password });
             console.log(result.data);
             setSuccess(true);
-            navigate('/login'); // Navigate to the login page after successful registration
+            setTimeout(() => {
+                navigate('/login'); // Navigate to login page after successful registration
+            }, 2000); 
         } catch (err) {
             console.error(err);
             setError('Registration failed. Please try again.');
@@ -80,7 +82,7 @@ const Register = () => {
             </form>
             
             {error && <p className="error-message">{error}</p>}
-            {success && <p className="success-message">Registration successful!</p>}
+            {success && <p className="success-message">Registration successful! Redirecting to login...</p>}
             
             <p>Already have an Account?</p>
             <Link to="/login" className="login-link">Login</Link>

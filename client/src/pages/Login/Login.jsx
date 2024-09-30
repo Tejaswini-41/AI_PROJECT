@@ -24,9 +24,14 @@ const Login = () => {
         }
 
         try {
+            // Make POST request to login endpoint
             const result = await axios.post('http://localhost:3000/auth/login', { email, password });
-            localStorage.setItem('authToken', response.data.token);
+            
+            // Store the token in local storage
+            localStorage.setItem('authToken', result.data.token);
             console.log(result.data);
+            
+            // Display success message and redirect to dashboard
             setSuccess(true);
             setTimeout(() => {
                 navigate('/dashboard'); 
@@ -37,7 +42,7 @@ const Login = () => {
         } finally {
             setLoading(false); 
         }
-    }
+    };
 
     return (
         <div className="login-container">
@@ -68,7 +73,6 @@ const Login = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {success && <p style={{ color: 'green' }}>Login successful! Redirecting...</p>}
 
-            {/* <p>Forgot Password?</p> */}
             <p>Don't have an account?</p>
             <Link to="/register" className="register-link">Register</Link>
         </div>
