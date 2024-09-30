@@ -26,9 +26,6 @@ const Login = () => {
         try {
             // Make POST request to login endpoint
             const result = await axios.post('http://localhost:3000/auth/login', { email, password });
-            
-            // Store the token in local storage
-            localStorage.setItem('authToken', result.data.token);
             console.log(result.data);
             
             // Display success message and redirect to dashboard
