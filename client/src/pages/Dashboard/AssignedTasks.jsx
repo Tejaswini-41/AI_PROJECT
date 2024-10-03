@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskCard from './TaskCard';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './AssignedTasks.css';
 

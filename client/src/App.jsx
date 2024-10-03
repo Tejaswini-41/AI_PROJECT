@@ -4,6 +4,8 @@ import Login from './pages/Login/Login';           // Import Login component
 import Register from './pages/Register/Register';   // Import Register component
 import Dashboard from './pages/Dashboard/Dashboard'; // Import Dashboard component
 import AssignedTasks from './pages/Dashboard/AssignedTasks';
+import Tdashboard from './pages/Teacher/Tdashboard';
+import ManageTask from './pages/Teacher/ManageTask';
 import SimilarityReport from './pages/Dashboard/SimilarityReport';
 
 
@@ -18,7 +20,8 @@ const App = () => {
                     <Route path="/login" element={<Login />} />           {/* Login route */}
                     <Route path="/dashboard" element={<Dashboard />} />   {/* Dashboard route */}
                     <Route path="/assigned-tasks" element={<AssignedTasks />} />
-
+                    <Route path = "/manage-task" element={<ManageTask/>} />
+                    <Route path="/tdashboard" element={<Tdashboard />} />
                     <Route path= "/similarity-report" element={<SimilarityReport />} />
                 </Routes>
             </div>
