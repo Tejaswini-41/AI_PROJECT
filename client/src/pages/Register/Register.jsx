@@ -5,6 +5,7 @@ import './Register.css'; // Import the CSS file for styling
 
 const Register = () => {
     const navigate = useNavigate(); // Initialize the navigate function
+    const [role, setRole] = useState('Student'); // New state for role
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +19,11 @@ const Register = () => {
         setLoading(true); 
         
         // Basic validation
+        if (!role) { // Ensure role is selected
+            setError('Please select a role.');
+            setLoading(false);
+            return;
+        }
         if (!name || !email || !password) {
             setError('All fields are required.');
             setLoading(false);
@@ -25,7 +31,7 @@ const Register = () => {
         }
         
         // Password validation
-        const passwordValidation = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/;
+        const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{6,}$/;
         if (!passwordValidation.test(password)) {
             setError('Password must include uppercase, lowercase, number, and special character.');
             setLoading(false);
@@ -33,7 +39,7 @@ const Register = () => {
         }
         
         try {
-            const result = await axios.post('http://localhost:3000/auth/register', { name, email, password });
+            const result = await axios.post('http://localhost:3000/auth/register', { name, email, password, role });
             console.log(result.data);
             setSuccess(true);
             navigate('/login'); // Navigate to the login page after successful registration
@@ -47,9 +53,21 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <h2>Student Registration</h2>
+            <h2>Registration</h2>
             <p>Sign Up for NOC Portal</p>
             <form onSubmit={handleSubmit} className="register-form">
+                {/* New Dropdown for Role Selection */}
+                <select 
+                    value={role} 
+                    onChange={(e) => setRole(e.target.value)} 
+                    className="role-select"
+                    required
+                >
+                    <option value="">Select Role</option>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+
                 <input 
                     type="text" 
                     value={name} 
@@ -80,7 +98,7 @@ const Register = () => {
             </form>
             
             {error && <p className="error-message">{error}</p>}
-            {success && <p className="success-message">Registration successful!</p>}
+            {success && <p className="success-message">Registration successfull!</p>}
             
             <p>Already have an Account?</p>
             <Link to="/login" className="login-link">Login</Link>

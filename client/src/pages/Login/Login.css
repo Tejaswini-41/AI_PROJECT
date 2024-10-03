@@ -44,3 +44,19 @@
     font-size: 14px;
     color: #666;
 }
+
+/* Existing styles remain unchanged */
+
+.role-select {
+    margin-bottom: 15px; /* Space below the dropdown */
+    padding: 10px; /* Padding inside dropdown */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded edges */
+    appearance: none; /* Remove default arrow */
+    background-color: #fff; /* White background */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5"><polygon points="0,0 10,0 5,5" fill="%23999"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 5px;
+    cursor: pointer; /* Pointer on hover */
+}

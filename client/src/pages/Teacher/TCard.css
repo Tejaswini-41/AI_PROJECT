@@ -1,0 +1,121 @@
+.task-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.description {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.upload-section {
+    display: flex;
+    align-items: center;
+}
+
+.file-upload {
+    display: none; /* Hide the default file input */
+}
+
+.upload-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px; /* Adjust spacing between button and upload list */
+    transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+/* Uploaded files list below the button */
+.uploaded-files ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.uploaded-files li {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 3px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.remove-button:hover {
+    background-color: darkred;
+}
+.task-card {
+    /* Your existing styles */
+}
+
+.upload-section {
+    margin-top: 10px;
+}
+
+.upload-button,
+.submit-button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.submit-button {
+    background-color: #2196F3;
+}
+
+.upload-button:hover,
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.remove-button {
+    margin-left: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #d32f2f;
+}
+.success-message {
+    color: green; /* Change to your desired color */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red; /* Change to your desired color */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
