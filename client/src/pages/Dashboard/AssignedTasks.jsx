@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TaskCard from './TaskCard';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar';
 import './AssignedTasks.css';
 
 const AssignedTasks = () => {

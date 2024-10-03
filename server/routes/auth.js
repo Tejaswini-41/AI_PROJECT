@@ -1,14 +1,13 @@
-// routes/auth.js
-
 import express from 'express';
-import { loginUser, registerUser } from '../controller/auth.js';
-import { getUserProfile } from '../controller/profile.js';
-// import { protect } from '../middleware/authMiddleware.js'; // Import middleware
+import { loginUser, registerUser, getUserProfile } from '../controller/auth.js'; // Imported getUserProfile here
+import { protect } from '../middleware/authMiddleware.js'; // We can add this once middleware is ready
 
 const router = express.Router();
 
 router.post('/login', loginUser);
 router.post('/register', registerUser);
-// router.get('/profile', protect, getUserProfile); // Protect this route
+
+// Route to get user profile (we can protect this route later)
+router.get('/profile', protect, getUserProfile); // Protect this route
 
 export default router;

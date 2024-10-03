@@ -1,31 +1,32 @@
 import React from 'react';
-import Card from './Card'; 
-import Sidebar from './sidebar'; 
-import './Dashboard.css'; 
+import Card from './TECard'; 
+// import Sidebar from './TSidebar'; 
+import Sidebar from '../Dashboard/sidebar';
+import './Tdashboard.css'; 
 import { useNavigate } from 'react-router-dom';
 import { FaPlus, FaBell } from 'react-icons/fa'; 
 
-const Dashboard = () => {
+const Tdashboard = () => {
     // Static user profile data
     const userProfile = {
         image: null, // Placeholder image
-        name: 'Tejaswini Durge',
-        email: 'tejaswini@gmail.com',
+        name: 'Dr. Chetali Shewale',
+        email: 'chetali@gmail.com',
     };
 
     const navigate = useNavigate();
 
     // Static subject list
     const subjects = [
-        { title: 'Artificial Intelligence', description: 'Dr. Chaitali Shewale' },
-        { title: 'Operating System', description: 'Dr. Mandar Mokashi' },
-        { title: 'Database Management System', description: 'Mahesh Bhandari' },
-        { title: 'Mainframe Technology', description: 'Swati Patil' },
+        { index:'1',title: 'Artificial Intelligence', description: 'Dr. Chaitali Shewale' },
+        { index:'2',title: 'Operating System', description: 'Dr. Mandar Mokashi' },
+        { index:'3',title: 'Database Management System', description: 'Mahesh Bhandari' },
+        { index:'4',title: 'Mainframe Technology', description: 'Swati Patil' },
     ];
 
     // Function to handle card clicks (for all subjects)
     const handleCardClick = () => {
-        navigate('/assigned-tasks');
+        navigate('/manage-tasks');
     };
 
     return (
@@ -48,7 +49,7 @@ const Dashboard = () => {
                     {/* Render the subject cards dynamically */}
                     {subjects.map((subject, index) => (
                         <Card 
-                            key={index} 
+                            key={subject.index} 
                             title={subject.title} 
                             description={subject.description} 
                             onClick={handleCardClick}
@@ -60,4 +61,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Tdashboard;
