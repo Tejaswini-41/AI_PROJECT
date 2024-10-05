@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './SimilarityReport.css'; // Make sure this is correctly linked
 
 const SimilarityReport = () => {
     const [similarityReport, setSimilarityReport] = useState([]);
@@ -31,23 +32,40 @@ const SimilarityReport = () => {
         fetchSimilarityReport();
     }, []);
 
+    const getColorByScore = (score) => {
+        if (score >= 70) return '#FF9A98';
+        if (score >= 62) return '#FFB668';
+        if (score >= 50) return '#FFFF4C';
+        return '';
+    };
+
+    const extractFileName = (file) => {
+        const fileParts = file.split('-'); 
+        return fileParts.slice(1).join('-'); // Remove the ID and return the rest
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
+        <div className="similarity-report-container ">
+            <div className='report-card'>
             <h1>Similarity Report</h1>
             {similarityReport.length > 0 ? (
-                <ul>
+                <ul className="similarity-list">
                     {similarityReport.map((report, index) => (
-                        <li key={index}>
-                            {report.file1} and {report.file2} have a similarity score of {report.similarity_score}%
+                        <li key={index} className="similarity-item" style={{ backgroundColor: getColorByScore(report.similarity_score) }}>
+                            <span className="file-name a">{extractFileName(report.file1)}</span>  
+                            &nbsp;&nbsp;and&nbsp;&nbsp;
+                            <span className="file-name"> {extractFileName(report.file2)}</span> 
+                            <span className="score" style={{ marginLeft: 'auto' }}>{report.similarity_score}%</span>
                         </li>
                     ))}
                 </ul>
             ) : (
                 <p>No similar documents found.</p>
             )}
+            </div>
         </div>
     );
 };

@@ -1,0 +1,67 @@
+.similarity-report-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+.report-card {
+    
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow:  0 2px 2px rgba(0, 0, 1, 0.324); /* Soft shadow effect */
+    margin: 20px 0; /* Margin around the card */
+}
+.similarity-report-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.similarity-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.similarity-item {
+    display: flex;
+    justify-content: space-between; /* Space between the file names and percentage */
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgba(240, 240, 240, 0.5); /* Default background color */
+}
+
+.file-name {
+    text-align: center;
+}
+.a{
+    margin-left: 20px;
+}
+
+.score {
+    font-weight: bold;
+    text-align: right;
+    flex-shrink: 0; /* Ensure the score remains fixed */
+    width: 80px; /* Fixed width for the score to maintain layout */
+}
+
+.faint-green {
+    background-color: rgba(144, 238, 144, 0.5); /* Light Green */
+}
+
+.faint-orange {
+    background-color: rgba(255, 165, 0, 0.5); /* Light Orange */
+}
+
+.faint-red {
+    background-color: rgba(255, 99, 71, 0.5); /* Light Red */
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
