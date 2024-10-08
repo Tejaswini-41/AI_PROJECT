@@ -1,45 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './TCard.css'; // Assuming you have a separate CSS for TaskCard
+import { useNavigate } from 'react-router-dom'; 
+const TaskCard = ({ taskId, title, description, dueDate, score, onDelete }) => {
+    const navigate = useNavigate(); // Initialize useNavigate
 
-const TaskCard = ({  taskId, title, description }) => { // Accept taskId as a prop
-    const [file, setFile] = useState(null);
-
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
+    // Function to handle the "View Similarity" button click
+    const handleViewSimilarity = () => {
+        navigate('/similarity-report'); // Navigate to the similarity report page
     };
-
-    const handleUpload = async () => {
-        if (!file) {
-            console.error('No file selected');
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('taskId', taskId); // Include taskId in the upload
-
-        try {
-            const response = await fetch('http://localhost:3000/api/upload', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to upload file');
-            }
-
-            const data = await response.json();
-            console.log('File uploaded:', data);
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
-    };
-
     return (
         <div className="task-card">
             <h3>{title}</h3>
             <p>{description}</p>
-            <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>Upload File</button>
+            <p className="task-date-score">Due Date: {dueDate}</p>
+            <p className="task-date-score">Score: {score}</p>
+            <div className="task-actions">
+                <button className="view-similarity-button" onClick={handleViewSimilarity}>
+                    View Similarity
+                </button>
+                <button className="delete-button" onClick={onDelete}>
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 .manage-task {
     display: flex;
     height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
 .sidebar {
@@ -148,20 +149,5 @@
 }
 
 .cancel-button:hover {
-    background-color: #c82333;
-}
-
-.delete-task-button {
-    padding: 10px 20px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 150px;
-    text-align: center;
-}
-
-.delete-task-button:hover {
     background-color: #c82333;
 }

@@ -1,37 +1,3 @@
-// import File from '../models/File';
-
-// // Function to handle file upload
-// export const uploadFile = async (req, res) => {
-//     try {
-//         const { taskId } = req.body; // Get taskId from the request body
-//         const { filename, path, originalname } = req.file; // Extract file data
-
-//         // Create a new file entry in the database
-//         const newFile = new File({
-//             filename,
-//             originalname,
-//             path,
-//             taskId, // Save taskId with the file record
-//         });
-
-//         await newFile.save();
-
-//         return res.status(201).json({ message: 'File uploaded successfully', file: newFile });
-//     } catch (error) {
-//         console.error('Error uploading file:', error);
-//         return res.status(500).json({ message: 'File upload failed', error });
-//     }
-// };
-
-
-
-
-
-
-
-
-
-
 import File from '../models/File.js';
 
 export const uploadFile = async (req, res) => {

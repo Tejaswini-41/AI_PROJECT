@@ -7,6 +7,7 @@ import AssignedTasks from './pages/Dashboard/AssignedTasks';
 import Tdashboard from './pages/Teacher/Tdashboard';
 import ManageTask from './pages/Teacher/ManageTask';
 import SimilarityReport from './pages/Dashboard/SimilarityReport';
+import ReceiptCard from './pages/Dashboard/ReceiptCard';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path = "/manage-task" element={<ManageTask/>} />
                     <Route path="/tdashboard" element={<Tdashboard />} />
                     <Route path= "/similarity-report" element={<SimilarityReport />} />
+                    <Route path= "/receipt" element={<ReceiptCard/>}/>
                 </Routes>
             </div>
         </Router>
