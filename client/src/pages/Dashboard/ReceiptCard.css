@@ -1,0 +1,110 @@
+/* ReceiptCard.css */
+
+.receipt-card {
+    width: 600px; /* Set a width for the receipt */
+    margin: 40px auto; /* Center the receipt on the page */
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for a card-like effect */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 80px; /* Adjust size for logo */
+    margin-right: 20px;
+}
+
+.college-details {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.college-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a4e8a; /* Blue text */
+}
+
+.college-address {
+    font-size: 14px;
+    color: #1a4e8a; /* Blue text */
+}
+
+/* Separator between sections */
+.separator {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+}
+
+/* NOC Receipt Title */
+.receipt-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Student Info Section */
+.student-info {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.student-info p {
+    margin: 8px 0;
+}
+
+/* Conditions Section */
+.conditions h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.conditions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.conditions li {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+/* Approved Section */
+.approved-section {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.approved-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: green; /* Green text for "Approved" */
+    margin-right: 10px;
+}
+
+.approved-icon {
+    font-size: 24px;
+    color: green; /* Green tick */
+}
+
+/* Instructions Section */
+.instructions {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    color: #555;
+}

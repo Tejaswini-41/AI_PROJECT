@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TaskCard from './TCard';
-// import Sidebar from './TSidebar';
 import Sidebar from '../Dashboard/sidebar';
 import './ManageTask.css';
 
@@ -11,37 +10,36 @@ const ManageTask = () => {
         email: 'chetali@gmail.com',
     };
 
-    const initialTasks = [
-        {
-            taskId: 1,
-            title: 'AI Task 1:',
-            description: 'Write an assignment on learning strategies mentioned in AI. Due: Sep 30',
-        },
-        {
-            taskId: 2,
-            title: 'AI Task 2:',
-            description: 'Write one example of partial order planning and non-linear planning. Due: Sep 25',
-        },
-        // Add more tasks as needed
-    ];
+    // Initialize tasks from localStorage or start with an empty array
+    const [tasks, setTasks] = useState(() => {
+        const savedTasks = localStorage.getItem('tasks');
+        return savedTasks ? JSON.parse(savedTasks) : [];
+    });
 
-    const [tasks, setTasks] = useState(initialTasks);
     const [showAddTaskModal, setShowAddTaskModal] = useState(false);
     const [newTask, setNewTask] = useState({ title: '', description: '', date: '', score: '' });
 
+    // Persist tasks to localStorage whenever tasks state changes
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, [tasks]);
+
     const handleAddTask = () => {
-        if (newTask.title.trim() === '' || newTask.description.trim() === '' || newTask.date === '' || newTask.score === '') {
+        const { title, description, date, score } = newTask;
+
+        if (title.trim() === '' || description.trim() === '' || date === '' || score === '') {
             alert('Please fill in all fields.');
             return;
         }
 
-        const formattedDescription = `${newTask.description} Due: ${newTask.date}, Score: ${newTask.score}`;
-
         const newTaskEntry = {
-            taskId: tasks.length + 1,
-            title: newTask.title,
-            description: formattedDescription,
+            taskId: Date.now(), // Unique taskId
+            title,
+            description,
+            dueDate: new Date(date).toLocaleDateString(), // Save dueDate separately
+            score, // Save score separately
         };
+    
 
         setTasks([...tasks, newTaskEntry]);
         setShowAddTaskModal(false);
@@ -62,26 +60,25 @@ const ManageTask = () => {
                 <div className="tasks-container">
                     {tasks.map((task) => (
                         <TaskCard
-                            key={task.taskId}
-                            taskId={task.taskId}
-                            title={task.title}
-                            description={task.description}
-                            onDelete={() => handleDeleteTask(task.taskId)} // Pass delete function
+                        key={task.taskId}
+                        taskId={task.taskId}
+                        title={task.title}
+                        description={task.description}
+                        dueDate={task.dueDate} // Passing dueDate separately
+                        score={task.score}     // Passing score separately
+                        onDelete={() => handleDeleteTask(task.taskId)} // Pass delete function
                         />
                     ))}
+                    {tasks.length === 0 && <p>No tasks assigned. Click "Add Task" to create one.</p>}
                 </div>
                 <div className="button-container">
-                <button className="add-task-button" onClick={() => setShowAddTaskModal(true)}>
-                    Add Task
-                </button>
-                <button className="delete-task-button" onClick={() => handleDeleteTask(task.taskId)}>
-                    Delete Task
-                </button>
-                <a href="/tdashboard" className="back-button">
-                    Back to Dashboard
-                </a>               
+                    <button className="add-task-button" onClick={() => setShowAddTaskModal(true)}>
+                        Add Task
+                    </button>
+                    <a href="/tdashboard" className="back-button">
+                        Back to Dashboard
+                    </a>               
                 </div>
-
             </div>
             {showAddTaskModal && (
                 <div className="modal">

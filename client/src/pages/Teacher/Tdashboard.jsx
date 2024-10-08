@@ -7,13 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaPlus, FaBell } from 'react-icons/fa'; 
 
 const Tdashboard = () => {
-    // Static user profile data
-    const userProfile = {
-        image: null, // Placeholder image
-        name: 'Dr. Chetali Shewale',
-        email: 'chetali@gmail.com',
-    };
-
     const navigate = useNavigate();
 
     // Static subject list
@@ -32,7 +25,7 @@ const Tdashboard = () => {
     return (
         <div className="dashboard">
             {/* Pass static user profile to Sidebar */}
-            <Sidebar userProfile={userProfile} />
+            <Sidebar  />
             <div className="main-content">
                 {/* Top Navbar */}
                 <nav className="navbar">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './sidebar.css'; // Import the CSS file for sidebar styling
 
 const Sidebar = () => {
     const [userProfile, setUserProfile] = useState(null);
     const token = localStorage.getItem('token'); // Assuming you're storing the token in local storage
+    const navigate = useNavigate(); // Initialize the useNavigate hook
 
     const getProfileImage = () => {
         if (userProfile && userProfile.image) {
@@ -32,6 +34,10 @@ const Sidebar = () => {
         fetchUserProfile(); // Fetch user profile when component mounts
     }, []);
 
+    const handleViewReceipt = () => {
+        navigate('/receipt'); // Navigate to the receipt route
+    };
+
     if (!userProfile) {
         return <div>Loading...</div>; // Display loading state
     }
@@ -43,7 +49,9 @@ const Sidebar = () => {
                 <h2 className="profile-name">Name: {userProfile.name || 'xyz xyz'}</h2>
                 <p className="profile-email">Email: {userProfile.email || 'xyz@gmail.com'}</p>
             </div>
-            <button className="view-receipt-button">View Receipt</button>
+            <button className="view-receipt-button" onClick={handleViewReceipt}>
+                View Receipt
+            </button>
         </div>
     );
 };

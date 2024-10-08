@@ -7,12 +7,7 @@ import { FaPlus, FaBell } from 'react-icons/fa';
 
 const Dashboard = () => {
     // Static user profile data
-    const userProfile = {
-        image: null, // Placeholder image
-        name: 'Tejaswini Durge',
-        email: 'tejaswini@gmail.com',
-    };
-
+    
     const navigate = useNavigate();
 
     // Static subject list
@@ -31,7 +26,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             {/* Pass static user profile to Sidebar */}
-            <Sidebar userProfile={userProfile} />
+            <Sidebar />
             <div className="main-content">
                 {/* Top Navbar */}
                 <nav className="navbar">
