@@ -37,11 +37,7 @@ const Register = () => {
         //     setLoading(false);
         //     return;
         // }
-<<<<<<< Updated upstream
-
-=======
         
->>>>>>> Stashed changes
         try {
             const result = await axios.post('http://localhost:3000/auth/register', { name, email, password, role });
             console.log(result.data);

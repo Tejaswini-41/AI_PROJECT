@@ -26,7 +26,8 @@ app.add_middleware(
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
 # Directory where uploaded files are stored
-UPLOADS_DIR = "C:\\AI Project\\AI_PROJECT\\server\\uploads\\"
+
+UPLOADS_DIR = "T:\\AI_PROJECT\\server\\uploads\\"
 # Function to extract text from files (PDF or DOCX)
 def extract_text_from_file(file_path):
     _, file_extension = os.path.splitext(file_path)
