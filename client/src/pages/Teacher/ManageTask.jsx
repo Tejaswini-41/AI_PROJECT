@@ -10,7 +10,6 @@ const ManageTask = () => {
         email: 'chetali@gmail.com',
     };
 
-    // Initialize tasks from localStorage or start with an empty array
     const [tasks, setTasks] = useState(() => {
         const savedTasks = localStorage.getItem('tasks');
         return savedTasks ? JSON.parse(savedTasks) : [];
@@ -19,7 +18,6 @@ const ManageTask = () => {
     const [showAddTaskModal, setShowAddTaskModal] = useState(false);
     const [newTask, setNewTask] = useState({ title: '', description: '', date: '', score: '' });
 
-    // Persist tasks to localStorage whenever tasks state changes
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]);

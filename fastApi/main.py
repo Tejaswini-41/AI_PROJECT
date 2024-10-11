@@ -10,8 +10,8 @@ app = FastAPI()
 
 # CORS middleware setup
 origins = [
-    "http://localhost:5173",  # Frontend URL
-    "http://localhost:3000"    # Other potential frontend URL
+    "http://localhost:5173",  
+    "http://localhost:3000"    
 ]
 
 app.add_middleware(
@@ -72,8 +72,8 @@ async def check_similarity():
     # Calculate similarity scores
     similarity_matrix = util.cos_sim(embeddings, embeddings).cpu().numpy()
 
-    # Create a similarity report for files with similarity > 60%
-    similarity_threshold = 0.60
+    # Create a similarity report for files with similarity > 50%
+    similarity_threshold = 0.50
     similarity_report = []
 
     # Iterate over the similarity matrix correctly
@@ -89,7 +89,7 @@ async def check_similarity():
 
     # If no similarity reports are found, return a message
     if not similarity_report:
-        return {"message": "No files with similarity greater than 60% found."}
+        return {"message": "No files with similarity greater than 50% found."}
 
     # Return the similarity report
     return {"similarity_report": similarity_report}
